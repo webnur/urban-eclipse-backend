@@ -1,9 +1,13 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, RequestHandler, Response } from "express";
 import { UserService } from "./user.service";
 import httpStatus from "http-status";
 // import httpStatus from "http-status";
 
-const createUser = async (req: Request, res: Response, next: NextFunction) => {
+const createUser: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     console.log(req.body); // Log the request body
     const result = req.body;
