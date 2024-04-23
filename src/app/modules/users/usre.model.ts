@@ -7,4 +7,5 @@ const userSchema = new Schema<IUser>({
 });
 
 // model
+// export const User = model<IUser, UserModel>("User", userSchema);
 export const User = model<IUser, UserModel>("User", userSchema);
