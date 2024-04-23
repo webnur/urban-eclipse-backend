@@ -21,8 +21,7 @@ const createUser: RequestHandler = async (
   }
 };
 
-
-const readUser = async(req: Request, res: Response, next: NextFunction) => {
+const readUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await UserService.readUser();
     res.status(httpStatus.OK).json({
@@ -33,11 +32,59 @@ const readUser = async(req: Request, res: Response, next: NextFunction) => {
   } catch (err) {
     next(err);
   }
-}
+};
 
+const findSingleUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const id = req.params.id;
+    const result = await UserService.findSingleUser(id);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "find single user successfully",
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
+const updateUser = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const id = req.params.id;
+    const data = req.body;
+    const result = await UserService.updateUser(id, data);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "update user successfully",
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const id = req.params.id;
+    const result = await UserService.deleteUser(id);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "delete user successfully",
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
 export const UserController = {
   createUser,
-  readUser
+  readUser,
+  findSingleUser,
+  updateUser,
+  deleteUser,
 };
