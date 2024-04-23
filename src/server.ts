@@ -1,4 +1,3 @@
-// const mongoose = require('mongoose');
 import mongoose from "mongoose";
 import app from "./app";
 const port = 3002;
