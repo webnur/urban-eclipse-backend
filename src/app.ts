@@ -1,6 +1,7 @@
 import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
 import httpStatus from "http-status";
+import routes from "./app/routes";
 
 const app: Application = express();
 
@@ -13,6 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
+
+app.use("/api/v1", routes);
 
 //handle Not found route
 app.use((req: Request, res: Response, next: NextFunction) => {
