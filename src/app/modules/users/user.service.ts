@@ -1,8 +1,9 @@
 import { IUser } from "./user.interface";
-import { User } from "./usre.model";
+import { User } from "./user.model";
 
 const createUser = async (data: IUser) => {
   const result = await User.create(data);
+  console.log(result)
   return result;
 };
 

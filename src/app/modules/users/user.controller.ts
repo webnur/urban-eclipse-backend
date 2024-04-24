@@ -1,7 +1,6 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import { UserService } from "./user.service";
 import httpStatus from "http-status";
-// import httpStatus from "http-status";
 
 const createUser: RequestHandler = async (
   req: Request,
@@ -10,7 +9,9 @@ const createUser: RequestHandler = async (
 ) => {
   try {
     console.log(req.body); // Log the request body
-    const result = req.body;
+    const data = req.body;
+    const result = UserService.createUser(data);
+
     res.status(httpStatus.OK).json({
       success: true,
       message: "create user successfully",
@@ -80,6 +81,8 @@ const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
     next(err);
   }
 };
+
+
 
 export const UserController = {
   createUser,
