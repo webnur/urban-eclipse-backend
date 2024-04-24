@@ -9,8 +9,8 @@ const createUser: RequestHandler = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req.body); // Log the request body
-    const result = req.body;
+    const data = req.body;
+    const result = await UserService.createUser(data);
     res.status(httpStatus.OK).json({
       success: true,
       message: "create user successfully",
@@ -23,7 +23,7 @@ const createUser: RequestHandler = async (
 
 const readUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await UserService.readUser();
+    const result = await UserService.readUsers();
     res.status(httpStatus.OK).json({
       success: true,
       message: "read user successfully",
