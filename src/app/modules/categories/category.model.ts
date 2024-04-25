@@ -14,9 +14,6 @@ const CategorySchema = new Schema<ICategory, CategoryModel>(
   },
   {
     timestamps: true,
-    toJSON: {
-      virtuals: true,
-    },
   }
 );
 
